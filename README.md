@@ -256,7 +256,7 @@ $ vim php-xdebug/Dockerfile
 
 > workshopDocker-phpVigo/docker/php-xdebug/Dockerfile
 ```dockerfile
-FROM rolandocaldas/php:base
+FROM rolandocaldas/php:7.2
 
 # install xdebug
 RUN pecl install xdebug \
@@ -270,7 +270,7 @@ $ vim php-dev/Dockerfile
 
 > workshopDocker-phpVigo/docker/php-dev/Dockerfile
 ```dockerfile
-FROM rolandocaldas/php:base
+FROM rolandocaldas/php:7.2
 
 # install xdebug
 RUN pecl install xdebug \
@@ -289,7 +289,7 @@ $ vim php-dev-mysql/Dockerfile
 
 > workshopDocker-phpVigo/docker/php-dev-mysql/Dockerfile
 ```dockerfile
-FROM rolandocaldas/php:dev
+FROM rolandocaldas/php:7.2-dev
 
 # Install mysql
 RUN apt-get update && apt-get install -y mysql-client \
@@ -306,7 +306,7 @@ $ git push origin master
 
 > \> tty 1
 ```bash
-$ docker run rolandocaldas/php:dev-mysql
+$ docker run rolandocaldas/php:7.2-dev-mysql
 ```
 
 > \> tty 1
@@ -327,7 +327,7 @@ $ vim docker-compose.yml
 version: "3.5"
 services:
   php-fpm:
-    image: rolandocaldas/php:dev-mysql
+    image: rolandocaldas/php:7.2-dev-mysql
 ```
 
 > \> tty 1
@@ -346,7 +346,7 @@ $ vim docker-compose.yml
 version: "3.5"
 services:
   php-fpm:
-    image: rolandocaldas/php:dev-mysql
+    image: rolandocaldas/php:7.2-dev-mysql
   webserver:
     image: nginx:alpine
     ports:
@@ -370,7 +370,7 @@ $ vim docker-compose.yml
 version: "3.5"
 services:
   php-fpm:
-    image: rolandocaldas/php:dev-mysql
+    image: rolandocaldas/php:7.2-dev-mysql
   webserver:
     image: nginx:alpine
     ports:
@@ -405,7 +405,7 @@ $ vim docker-compose.yml
 version: "3.5"
 services:
   php-fpm:
-    image: rolandocaldas/php:dev-mysql
+    image: rolandocaldas/php:7.2-dev-mysql
   webserver:
     image: nginx:alpine
     ports:
@@ -442,7 +442,7 @@ $ vim docker-compose.yml
 version: "3.5"
 services:
   php-fpm:
-    image: rolandocaldas/php:dev-mysql
+    image: rolandocaldas/php:7.2-dev-mysql
     depends_on:
       - mysql
   webserver:
@@ -488,7 +488,7 @@ $ vim docker-compose-yml
 version: "3.5"
 services:
   php-fpm:
-    image: rolandocaldas/php:dev-mysql
+    image: rolandocaldas/php:7.2-dev-mysql
     depends_on:
       - mysql
   webserver:
@@ -560,7 +560,7 @@ $ cd .. && vim docker-compose.yml
 version: "3.5"
 services:
   php-fpm:
-    image: rolandocaldas/php:dev-mysql
+    image: rolandocaldas/php:7.2-dev-mysql
     depends_on:
       - mysql
   webserver:
@@ -613,7 +613,7 @@ $ vim docker-compose.yml
 version: "3.5"
 services:
   php-fpm:
-    image: rolandocaldas/php:dev-mysql
+    image: rolandocaldas/php:7.2-dev-mysql
     depends_on:
       - mysql
     volumes:
@@ -704,7 +704,7 @@ $ touch Dockerfile && vim Dockerfile
 
 > workshopDocker-phpVigo/docker/infrastructure/php-fpm/Dockerfile
 ```dockerfile
-FROM rolandocaldas/php:dev-mysql
+FROM rolandocaldas/php:7.2-dev-mysql
 
 RUN usermod -u 1000 www-data && groupmod -g 1000 www-data
 ```
@@ -848,7 +848,7 @@ $ vim php-fpm/Dockerfile
 
 > workshopDocker-phpVigo/docker/infrastructure/php-fpm/Dockerfile
 ```dockerfile
-FROM rolandocaldas/php:dev-mysql
+FROM rolandocaldas/php:7.2-dev-mysql
 
 ARG LOCAL_UID
 ARG LOCAL_GID
