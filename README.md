@@ -255,7 +255,31 @@ En https://hub.docker.com nos creamos una cuenta y la enlazamos con Github. Para
 una vez creada ni ideay estando conectados accedemos a https://hub.docker.com/account/authorized-services/
 y desde ahí vamos a "Link Github"
 
-Con la cuenta enlazada creamos un 
+Con la cuenta enlazada creamos un automated build:
+
+![docker hub](https://raw.githubusercontent.com/phpvigo/docker-workshop/master/images/01-create-automated-build.png)
+
+Seleccionamos "Create Auto-build Github"
+
+![Create Auto-build Github](https://raw.githubusercontent.com/phpvigo/docker-workshop/master/images/02-create-automated-build.png)
+
+Buscamos el repositorio de nuestro github docker-workshop 
+
+![Github](https://raw.githubusercontent.com/phpvigo/docker-workshop/master/images/03-create-automated-build.png)
+
+Podemos seleccionar visibilidad privada (de forma gratuita tenemos uno disponible) o público, en nuestro caso este último
+
+![Select public](https://raw.githubusercontent.com/phpvigo/docker-workshop/master/images/04-create-automated-build.png)
+
+Una vez creado, vamos a Build Settings y lo dejamos como en a siguiente imagen:
+
+![Config builds](https://raw.githubusercontent.com/phpvigo/docker-workshop/master/images/05-create-automated-build.png)
+
+Clicamos en "Trigger" por orden, primero php-base, luego php-xdebug, php-dev y php-dev-mysql como último.
+
+Los build entrarán en cola en el hub y una vez finalicen en tags tendremos las imágenes disponibles.
+
+![Tags available](https://raw.githubusercontent.com/phpvigo/docker-workshop/master/images/06-create-automated-build.png)
 
 > \> tty 1
 ```bash
