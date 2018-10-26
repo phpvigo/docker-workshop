@@ -245,9 +245,17 @@ $ git config --global user.email "rolando.caldas@gmail.com"
 $ git config --global user.name "Rolando Caldas"
 $ git add .
 $ git commit -m "My php docker containers configuration for development"
-$ git remote add origin https://github.com/rolando-caldas/docker-php.git
+$ git remote add origin https://github.com/phpvigo/docker-workshop.git
 $ git push -u origin master
 ```
+
+> Google Chrome
+
+En https://hub.docker.com nos creamos una cuenta y la enlazamos con Github. Para enlazarla con Github,
+una vez creada ni ideay estando conectados accedemos a https://hub.docker.com/account/authorized-services/
+y desde ahí vamos a "Link Github"
+
+Con la cuenta enlazada creamos un 
 
 > \> tty 1
 ```bash
@@ -256,7 +264,7 @@ $ vim php-xdebug/Dockerfile
 
 > workshopDocker-phpVigo/docker/php-xdebug/Dockerfile
 ```dockerfile
-FROM rolandocaldas/php:7.2
+FROM phpvigo/docker-workshop:php-base
 
 # install xdebug
 RUN pecl install xdebug \
@@ -270,7 +278,7 @@ $ vim php-dev/Dockerfile
 
 > workshopDocker-phpVigo/docker/php-dev/Dockerfile
 ```dockerfile
-FROM rolandocaldas/php:7.2
+FROM phpvigo/docker-workshop:php-base
 
 # install xdebug
 RUN pecl install xdebug \
@@ -289,7 +297,7 @@ $ vim php-dev-mysql/Dockerfile
 
 > workshopDocker-phpVigo/docker/php-dev-mysql/Dockerfile
 ```dockerfile
-FROM rolandocaldas/php:7.2-dev
+FROM phpvigo/docker-workshop:php-dev
 
 # Install mysql
 RUN apt-get update && apt-get install -y mysql-client \
@@ -306,7 +314,7 @@ $ git push origin master
 
 > \> tty 1
 ```bash
-$ docker run rolandocaldas/php:7.2-dev-mysql
+$ docker run phpvigo/docker-workshop:php-dev-mysql
 ```
 
 > \> tty 1
@@ -327,7 +335,7 @@ $ vim docker-compose.yml
 version: "3.5"
 services:
   php-fpm:
-    image: rolandocaldas/php:7.2-dev-mysql
+    image: phpvigo/docker-workshop:php-dev-mysql
 ```
 
 > \> tty 1
@@ -346,7 +354,7 @@ $ vim docker-compose.yml
 version: "3.5"
 services:
   php-fpm:
-    image: rolandocaldas/php:7.2-dev-mysql
+    image: phpvigo/docker-workshop:php-dev-mysql
   webserver:
     image: nginx:alpine
     ports:
@@ -370,7 +378,7 @@ $ vim docker-compose.yml
 version: "3.5"
 services:
   php-fpm:
-    image: rolandocaldas/php:7.2-dev-mysql
+    image: phpvigo/docker-workshop:php-dev-mysql
   webserver:
     image: nginx:alpine
     ports:
@@ -405,7 +413,7 @@ $ vim docker-compose.yml
 version: "3.5"
 services:
   php-fpm:
-    image: rolandocaldas/php:7.2-dev-mysql
+    image: phpvigo/docker-workshop:php-dev-mysql
   webserver:
     image: nginx:alpine
     ports:
@@ -442,7 +450,7 @@ $ vim docker-compose.yml
 version: "3.5"
 services:
   php-fpm:
-    image: rolandocaldas/php:7.2-dev-mysql
+    image: phpvigo/docker-workshop:php-dev-mysql
     depends_on:
       - mysql
   webserver:
@@ -488,7 +496,7 @@ $ vim docker-compose-yml
 version: "3.5"
 services:
   php-fpm:
-    image: rolandocaldas/php:7.2-dev-mysql
+    image: phpvigo/docker-workshop:php-dev-mysql
     depends_on:
       - mysql
   webserver:
@@ -560,7 +568,7 @@ $ cd .. && vim docker-compose.yml
 version: "3.5"
 services:
   php-fpm:
-    image: rolandocaldas/php:7.2-dev-mysql
+    image: phpvigo/docker-workshop:php-dev-mysql
     depends_on:
       - mysql
   webserver:
@@ -613,7 +621,7 @@ $ vim docker-compose.yml
 version: "3.5"
 services:
   php-fpm:
-    image: rolandocaldas/php:7.2-dev-mysql
+    image: phpvigo/docker-workshop:php-dev-mysql
     depends_on:
       - mysql
     volumes:
@@ -704,7 +712,7 @@ $ touch Dockerfile && vim Dockerfile
 
 > workshopDocker-phpVigo/docker/infrastructure/php-fpm/Dockerfile
 ```dockerfile
-FROM rolandocaldas/php:7.2-dev-mysql
+FROM phpvigo/docker-workshop:php-dev-mysql
 
 RUN usermod -u 1000 www-data && groupmod -g 1000 www-data
 ```
@@ -848,7 +856,7 @@ $ vim php-fpm/Dockerfile
 
 > workshopDocker-phpVigo/docker/infrastructure/php-fpm/Dockerfile
 ```dockerfile
-FROM rolandocaldas/php:7.2-dev-mysql
+FROM phpvigo/docker-workshop:php-dev-mysql
 
 ARG LOCAL_UID
 ARG LOCAL_GID
